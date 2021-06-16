@@ -2,21 +2,43 @@
     <div>
         <mat-card>
             <mat-card-title>Register</mat-card-title>
-            <form>
+            <form [formGroup]="registerForm">
                 <mat-form-field>
-                    <input matInput placeholder="Username" type="text">
+                    <input matInput placeholder="Username" type="text" formControlName="Username">
                 </mat-form-field>
-                <p style="color:red">username is required</p>
+                <div *ngIf="registerForm.controls.Username.dirty || registerForm.controls.Username.touched" class="alert">
+                    <div *ngIf="registerForm.controls.Username.errors?.required">
+                        username is required
+                    </div>
+                    <div *ngIf="registerForm.controls.Username.errors?.custom">
+                        username min 5 chars and max 10 chars
+                    </div>
+                </div>
+
+
                 <mat-form-field>
-                    <input matInput placeholder="Email" type="email">
+                    <input matInput placeholder="Email" type="email" formControlName="Email">
                 </mat-form-field>
-                <p style="color:red">email is required</p>
+                <div *ngIf="registerForm.controls.Email.errors?.required && (registerForm.controls.Email.dirty || registerForm.controls.Email.touched)" class="alert">
+                    email is required
+                </div>
+
+
                 <mat-form-field>
-                    <input matInput placeholder="Password" type="password">
+                    <input matInput placeholder="Password" type="password" formControlName="Pass">
                 </mat-form-field>
-                <p style="color:red">password is required</p>
+                <div *ngIf="registerForm.controls.Pass.dirty || registerForm.controls.Pass.touched" class="alert">
+                    <div *ngIf="registerForm.controls.Pass.errors?.required">
+                        password is required
+                    </div>
+                    <div *ngIf="registerForm.controls.Pass.errors?.custom">
+                        password is min 5 chars and max 10 chars
+                    </div>
+                </div>             
+
+
                 <div id="btn-group">
-                    <button mat-raised-button color="primary">register</button>
+                    <button mat-raised-button color="primary" [disabled]="registerForm.invalid">register</button>
                 </div>
             </form>
         </mat-card>

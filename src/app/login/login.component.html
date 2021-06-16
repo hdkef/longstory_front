@@ -2,17 +2,21 @@
     <div>
         <mat-card>
             <mat-card-title>Login</mat-card-title>
-            <form>
+            <form [formGroup]="loginForm">
                 <mat-form-field>
-                    <input matInput placeholder="Username" type="text">
+                    <input matInput placeholder="Username" type="text" formControlName="Username">
                 </mat-form-field>
-                <p style="color:red">username is required</p>
+                <div *ngIf="loginForm.controls.Username.errors?.required && (loginForm.controls.Username.dirty || loginForm.controls.Username.touched)" class="alert">
+                    username is required
+                </div>
                 <mat-form-field>
-                    <input matInput placeholder="Password" type="password">
+                    <input matInput placeholder="Password" type="password" formControlName="Pass">
                 </mat-form-field>
-                <p style="color:red">password is required</p>
+                <div *ngIf="loginForm.controls.Pass.errors?.required && (loginForm.controls.Pass.dirty || loginForm.controls.Pass.touched)" class="alert">
+                    password is required
+                </div>
                 <div id="btn-group">
-                    <button mat-raised-button color="primary">login</button>
+                    <button mat-raised-button color="primary" [disabled]="loginForm.invalid">login</button>
                 </div>
             </form>
         </mat-card>

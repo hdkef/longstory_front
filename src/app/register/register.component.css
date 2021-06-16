@@ -22,3 +22,7 @@ mat-form-field{
 #btn-group {
     margin-top:25px;
 }
+
+.alert {
+    color:red;
+}

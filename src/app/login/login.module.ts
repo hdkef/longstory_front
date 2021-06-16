@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import {MatCardModule} from '@angular/material/card'
 import {MatInputModule} from '@angular/material/input'
 import {MatButtonModule} from '@angular/material/button'
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button'
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
