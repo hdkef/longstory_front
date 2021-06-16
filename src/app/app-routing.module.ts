@@ -18,6 +18,9 @@ const routes: Routes = [
   {path:'view',loadChildren:()=>{
     return import('./video-view/video-view.module').then((m)=>{return m.VideoViewModule})
   }},
+  {path:'home',loadChildren:()=>{
+    return import('./home/home.module').then((m)=>{return m.HomeModule})
+  }},
 ];
 
 @NgModule({

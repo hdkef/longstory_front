@@ -1,0 +1,24 @@
+#container {
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+    height: 100vh;
+}
+
+mat-card {
+    margin-top: 15vh;
+    padding:30px;
+    width:300px;
+}
+
+mat-card-title{
+    margin-bottom: 20px;
+}
+
+mat-form-field{
+    display: block;
+}
+
+#btn-group {
+    margin-top:25px;
+}
