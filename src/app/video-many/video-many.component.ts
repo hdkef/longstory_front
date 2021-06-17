@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { VideosMock } from '../mock/videos';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { VideoOne } from '../models/video-one';
 
 @Component({
@@ -7,16 +6,19 @@ import { VideoOne } from '../models/video-one';
   templateUrl: './video-many.component.html',
   styleUrls: ['./video-many.component.css']
 })
-export class VideoManyComponent implements OnInit {
+export class VideoManyComponent implements OnChanges {
 
-  constructor(private mockVideos:VideosMock) { }
+  constructor() { }
 
-  videos:Promise<VideoOne[]>
-  ngOnInit(): void {
-    let videomock = this.mockVideos.videosMock
-    this.videos = new Promise((resolve,_)=>{
-      resolve(videomock)
-    })
+  @Input()videos:VideoOne[]
+  videosAsync:Promise<VideoOne[]>
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    let videos = this.videos
+    if (videos){
+      this.videosAsync = new Promise((resolve,_)=>{
+        resolve(videos)
+      })
+    }
   }
-
 }

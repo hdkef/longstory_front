@@ -14,9 +14,10 @@ export class VideoOneComponent implements OnChanges {
   constructor(private router:Router) { }
   
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.video){
+    let video =this.video
+    if (video){
       this.videoAsync = new Promise((resolve,_)=>{
-        resolve(this.video)
+        resolve(video)
       })
     }
   }

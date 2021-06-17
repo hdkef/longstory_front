@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VideosMock } from '../mock/videos';
+import { VideoOne } from '../models/video-one';
 
 @Component({
   selector: 'app-search-page',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private vidMock:VideosMock) { }
+
+  videos:Promise<VideoOne[]>
 
   ngOnInit(): void {
+    let vidmock = this.vidMock.videosMock
+    vidmock.pop()
+    this.videos = new Promise((resolve,_)=>{
+      resolve(vidmock)
+    })
   }
 
 }

@@ -10,6 +10,9 @@ import { PaginatorComponent } from './paginator.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    PaginatorComponent
   ]
 })
 export class PaginatorModule { }

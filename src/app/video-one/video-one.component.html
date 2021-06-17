@@ -1,4 +1,10 @@
 <div class="video-one">
     <img class="video-thumb" [src]="(videoAsync | async)?.Thumbnail" (click)="goView()">
-    <h3>{{(videoAsync | async)?.Title}}</h3>
+    <div class="info">
+        <img [src]="(videoAsync | async)?.User.AvatarURL">
+        <div class="title" (click)="goView()">
+            <h3>{{(videoAsync | async)?.Title}}</h3>
+            <p>{{(videoAsync | async)?.User.Name}}</p>
+        </div>
+    </div>
 </div>

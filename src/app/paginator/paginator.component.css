@@ -1,0 +1,11 @@
+#container {
+    display: flex;
+    justify-content: center;
+}
+
+.paginator{
+    display: block;
+    width:32px;
+    margin:12px;
+    cursor:pointer;
+}

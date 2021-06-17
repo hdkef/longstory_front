@@ -3,7 +3,7 @@
         <h2><u>hotspot</u></h2>
     </div>
     <div class="wrapper-videos">
-        <app-video-many></app-video-many>
+        <app-video-many [videos]="videoshotspot | async"></app-video-many>
     </div>
 </div>
 <div class="wrapper">
@@ -11,6 +11,6 @@
         <h2><u>for you</u></h2>
     </div>
     <div class="wrapper-videos">
-        <app-video-many></app-video-many>
+        <app-video-many [videos]="videosforyou | async"></app-video-many>
     </div>
 </div>

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchPageComponent } from './search-page.component';
 import { RouterModule } from '@angular/router';
+import { PaginatorModule } from '../paginator/paginator.module';
+import { VideoManyModule } from '../video-many/video-many.module';
 
 
 
@@ -11,6 +13,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    PaginatorModule,
+    VideoManyModule,
     RouterModule.forChild([
       {path:'',component:SearchPageComponent}
     ])

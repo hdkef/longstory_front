@@ -1,9 +1,14 @@
+#center {
+    display: flex;
+    justify-content: center;
+}
+
 #main-wrapper{
     padding:15px;
 }
 
-#main-video, #main-desc{
-    width: 900px;
+#main-video, #main-desc, #info{
+    width: 80vw;
 }
 
 #showDesc {
@@ -19,8 +24,32 @@
     margin-right: 8px;
 }
 
+#info img{
+    display: block;
+    width: 45px;
+    border-radius: 50%;
+}
+
+#info {
+    padding: 15px 0 15px 0;
+    display: flex;
+    justify-content: left;
+}
+
+#title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+}
+
+#title h3{
+    padding: 0px;
+    margin: 0px;
+}
+
 @media only screen and (max-width:900px){
-    #main-video, #main-desc{
+    #main-video, #main-desc, #info{
         width: 90vw;
     }
 }

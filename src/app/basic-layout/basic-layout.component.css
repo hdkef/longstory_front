@@ -8,4 +8,5 @@ app-navbar {
     margin-top: 53px;
     position:absolute;
     padding:5px;
+    width: 100%;
 }

@@ -11,7 +11,7 @@ export class VideoViewComponent implements OnInit {
 
   FALSE_DESC_CAPT = "show video description"
   TRUE_DESC_CAPT = "hide video description"
-  showDesc = {caption:this.FALSE_DESC_CAPT,value:false}
+  showDesc = {caption:this.TRUE_DESC_CAPT,value:true}
 
   ngOnInit(): void {
   }
