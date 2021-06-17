@@ -1,1 +1,3 @@
-<p>video-many works!</p>
+<div class="grid-view">
+    <app-video-one *ngFor="let v of videos | async" class="app-vid-one" [video]="v"></app-video-one>
+</div>

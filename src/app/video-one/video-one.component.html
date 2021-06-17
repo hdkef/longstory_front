@@ -1,1 +1,4 @@
-<p>video-one works!</p>
+<div class="video-one">
+    <img class="video-thumb" [src]="(videoAsync | async)?.Thumbnail" (click)="goView()">
+    <h3>{{(videoAsync | async)?.Title}}</h3>
+</div>

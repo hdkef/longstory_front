@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VideoViewComponent } from './video-view.component';
+import { SearchPageComponent } from './search-page.component';
 import { RouterModule } from '@angular/router';
-import { NavbarModule } from '../navbar/navbar.module';
 
 
 
 @NgModule({
   declarations: [
-    VideoViewComponent
+    SearchPageComponent
   ],
   imports: [
     CommonModule,
-    NavbarModule,
     RouterModule.forChild([
-      {path:'',component:VideoViewComponent}
+      {path:'',component:SearchPageComponent}
     ])
   ]
 })
-export class VideoViewModule { }
+export class SearchPageModule { }

@@ -1,0 +1,14 @@
+.grid-view{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.app-vid-one{
+    margin:0px 15px 0px 15px;
+}
+
+@media only screen and (max-width:900px){
+    .grid-view{
+        grid-template-columns: 1fr;
+    }
+}

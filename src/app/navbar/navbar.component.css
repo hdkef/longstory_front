@@ -1,0 +1,26 @@
+ul, li {
+    padding:0;
+    margin:0;
+}
+
+#logo img, .action-icon{
+    width: 32px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: whitesmoke;
+}
+
+#logo, #app-search, li{
+    margin: 8px;
+}
+
+li {
+    display: inline-block;
+}
+
+#app-search {
+    width: 30vw;
+}

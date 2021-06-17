@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VideoOneComponent } from './video-one.component';
+import { SearchComponent } from './search.component';
 
 
 
 @NgModule({
   declarations: [
-    VideoOneComponent
+    SearchComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports:[
-    VideoOneComponent
+    SearchComponent,
   ]
 })
-export class VideoOneModule { }
+export class SearchModule { }
