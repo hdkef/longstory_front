@@ -6,14 +6,18 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BasicLayoutComponent } from './basic-layout/basic-layout.component';
+import { NavbarModule } from './navbar/navbar.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BasicLayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NavbarModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     NoopAnimationsModule

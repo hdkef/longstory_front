@@ -1,6 +1,12 @@
-<app-navbar></app-navbar>
-<div id="container">
-    <div id="main-wrapper">
-        <video src="" id="main-video" src="assets/test.mkv"></video>
+<div id="main-wrapper">
+    <video controls="controls" id="main-video" src="" autoplay></video>
+    <h1>Title of the video</h1>
+    <p (click)="toggleDesc()" id="showDesc">{{showDesc.caption}}</p>
+    <div id="main-desc" *ngIf="showDesc.value">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, recusandae. Assumenda dolore quia explicabo deserunt modi a eum ad officia minus magnam. Aliquam saepe non, tenetur sed vel praesentium natus earum dolorum iste, eveniet nulla aliquid accusantium nihil magni ab eaque maxime numquam libero deserunt assumenda eligendi molestiae accusamus officiis voluptates! Ab sint illum obcaecati, unde libero fugit placeat. Beatae, ipsam accusamus. Quo illum necessitatibus ullam sunt qui porro, id aliquam eius laborum. Neque distinctio ut sequi. Ipsa optio provident qui dolor quia? Libero, facilis nobis culpa reiciendis, magni earum autem distinctio molestiae maiores consequuntur, illo laboriosam nihil! Magni id dolorum sint vitae nulla. Molestias architecto, iusto laboriosam nihil consequatur cum, fuga ab, assumenda veniam suscipit velit impedit porro. Molestias ab enim eius provident quod, consequatur eligendi officiis vel magnam nobis quos nulla facilis illum reprehenderit! Perferendis accusantium dolor cumque architecto nulla hic consequuntur adipisci odio voluptatum, nesciunt repellat consequatur?
+    </div>
+    <div id="btn-group">
+        <button mat-stroked-button>112 Like</button>
+        <button mat-stroked-button>11 Share</button>
     </div>
 </div>

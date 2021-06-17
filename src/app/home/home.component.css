@@ -1,14 +1,3 @@
-app-navbar {
-    position: fixed;
-    z-index: 5;
-    width: 100%;
-}
-
-#container {
-    margin-top: 53px;
-    position:absolute;
-    padding:5px;
-}
 .wrapper{
     padding-top: 30px;
 }

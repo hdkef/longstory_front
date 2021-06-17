@@ -1,19 +1,26 @@
-app-navbar {
-    position: fixed;
-    z-index: 5;
-    width: 100%;
-}
-
-#container {
-    margin-top: 53px;
-    position:absolute;
-    padding:5px;
-}
-
 #main-wrapper{
     padding:15px;
 }
 
-#main-video{
+#main-video, #main-desc{
     width: 900px;
+}
+
+#showDesc {
+    cursor: pointer;
+    color:grey;
+}
+
+#btn-group {
+    margin-top: 15px;
+}
+
+#btn-group button{
+    margin-right: 8px;
+}
+
+@media only screen and (max-width:900px){
+    #main-video, #main-desc{
+        width: 90vw;
+    }
 }
