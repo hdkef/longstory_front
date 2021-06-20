@@ -1,10 +1,10 @@
 <div class="video-one">
-    <img class="video-thumb" [src]="(videoAsync | async)?.Thumbnail" (click)="goView()">
+    <img class="video-thumb" [src]="(videoAsync | async)?.thumbnail" (click)="goView()">
     <div class="info">
-        <img [src]="(videoAsync | async)?.User.AvatarURL">
+        <img [src]="(videoAsync | async)?.user.avatarurl">
         <div class="title" (click)="goView()">
-            <h3>{{(videoAsync | async)?.Title}}</h3>
-            <p>{{(videoAsync | async)?.User.Name}}</p>
+            <h3>{{(videoAsync | async)?.title}}</h3>
+            <p>{{(videoAsync | async)?.user.username}}</p>
         </div>
     </div>
 </div>
