@@ -2,17 +2,17 @@
     <div>
         <mat-card>
             <mat-card-title>Login</mat-card-title>
-            <form [formGroup]="loginForm">
+            <form [formGroup]="loginForm" (ngSubmit)="goLogin()">
                 <mat-form-field>
-                    <input matInput placeholder="Username" type="text" formControlName="Username">
+                    <input matInput placeholder="username" type="text" formControlName="username">
                 </mat-form-field>
-                <div *ngIf="loginForm.controls.Username.errors?.required && (loginForm.controls.Username.dirty || loginForm.controls.Username.touched)" class="alert">
+                <div *ngIf="loginForm.controls.username.errors?.required && (loginForm.controls.username.dirty || loginForm.controls.username.touched)" class="alert">
                     username is required
                 </div>
                 <mat-form-field>
-                    <input matInput placeholder="Password" type="password" formControlName="Pass">
+                    <input matInput placeholder="password" type="password" formControlName="pass">
                 </mat-form-field>
-                <div *ngIf="loginForm.controls.Pass.errors?.required && (loginForm.controls.Pass.dirty || loginForm.controls.Pass.touched)" class="alert">
+                <div *ngIf="loginForm.controls.pass.errors?.required && (loginForm.controls.pass.dirty || loginForm.controls.pass.touched)" class="alert">
                     password is required
                 </div>
                 <div id="btn-group">

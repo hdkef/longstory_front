@@ -10,6 +10,9 @@ import { BasicLayoutComponent } from './basic-layout/basic-layout.component';
 import { NavbarModule } from './navbar/navbar.module';
 import { AuthComponent } from './guard/auth/auth.component';
 import { LoginComponent } from './guard/login/login.component';
+import { AuthEffect } from './redux/effects/auth-effect';
+import { AppReducer } from './redux/reducers/app-reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,8 +25,9 @@ import { LoginComponent } from './guard/login/login.component';
     BrowserModule,
     AppRoutingModule,
     NavbarModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    HttpClientModule,
+    StoreModule.forRoot(AppReducer),
+    EffectsModule.forRoot([AuthEffect]),
     NoopAnimationsModule
   ],
   providers: [],

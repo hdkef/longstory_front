@@ -21,7 +21,7 @@ export class LogoutStart implements Action{
 
 export class LoginStart implements Action{
 
-    constructor(){}
+    constructor(public payload:{username:string,pass:string}){}
     type: string = LOGIN_START
 }
 

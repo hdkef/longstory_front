@@ -23,7 +23,7 @@ export class VideoOneComponent implements OnChanges {
   }
 
   goView(){
-    this.router.navigate(['/view'],{queryParams:{ID:this.video.ID}})
+    this.router.navigate(['/view'],{queryParams:{ID:this.video.id}})
   }
 
   

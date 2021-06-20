@@ -8,6 +8,7 @@ export class VideosMock {
     return {
       id:id,
       title:title,
+      video:"videos",
       thumbnail:thumbnail,
       user:{
         id:usrid,
