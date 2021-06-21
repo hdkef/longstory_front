@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BasicLayoutComponent } from './basic-layout/basic-layout.component';
+import { AuthGuard } from './guard/auth.guard';
+import { LoginGuard } from './guard/login.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
-  {path:'login',loadChildren:()=>{
+  {path:'login',canActivate:[LoginGuard],loadChildren:()=>{
     return import('./login/login.module').then((m)=>{return m.LoginModule})
   }},
   {path:'register',loadChildren:()=>{
@@ -24,6 +26,9 @@ const routes: Routes = [
   }},
   {path:'search',component:BasicLayoutComponent,loadChildren:()=>{
     return import('./search-page/search-page.module').then((m)=>{return m.SearchPageModule})
+  }},
+  {path:'dashboard',canActivate:[AuthGuard],component:BasicLayoutComponent,loadChildren:()=>{
+    return import('./dashboard/dashboard.module').then((m)=>{return m.DashboardModule})
   }},
 ];
 

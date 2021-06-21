@@ -10,7 +10,8 @@ const initState:State = {
     user:{
         id:"",
         username:"",
-        avatarurl:""
+        avatarurl:"",
+        email:"",
     },
     token:"",
 }
@@ -21,13 +22,10 @@ export function AuthReducer (
 ){
     switch(action.type){
         case fromAuthAction.LOGIN_OK:
+            console.log("LOGIN OK")
             return {
                 ...state,
-                user:{
-                    id:action.payload.id,
-                    username:action.payload.username,
-                    avatarurl:action.payload.avatarurl,
-                },
+                user:action.payload.user,
                 token:action.payload.token,
             }
         default:

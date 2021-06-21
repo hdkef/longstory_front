@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store"
+import { User } from "src/app/models/user"
 
 export const LOGOUT_START = "auth logout start"
 export const LOGOUT_OK = "auth logout ok"
@@ -34,7 +35,7 @@ export class AutoLoginStart implements Action {
 
 export class LoginOK {
 
-    constructor(){}
+    constructor(public payload:{user:User,token:string}){}
     type:string = LOGIN_OK
 }
 

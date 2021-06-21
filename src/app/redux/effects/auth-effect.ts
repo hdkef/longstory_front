@@ -4,10 +4,11 @@ import * as fromAuthAction from '../actions/auth-action'
 import {catchError, map, switchMap} from 'rxjs/operators'
 import { of } from "rxjs";
 import { GqlService } from "src/app/gql.service";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthEffect {
-    constructor(private action$:Actions, private gql:GqlService){}
+    constructor(private action$:Actions, private gql:GqlService, private router:Router){}
 
     loginStart = createEffect(()=>{
         return this.action$.pipe(
@@ -34,10 +35,12 @@ export class AuthEffect {
                 return this.gql.fetch(payload).pipe(
                     map((res)=>{
                         console.log(res)
-                        let token = res["data"]["login"]["token"]
-                        if (token)
-                        this.saveToLocal(token)
-                        return new fromAuthAction.SendInfo({info:"Login OK"})
+                        let data = res["data"]["login"]
+                        if (data["token"]){
+                            let token = data["token"]
+                            this.saveToLocal(token)
+                            return new fromAuthAction.LoginOK({user:data["user"],token:token})
+                        }
                     }),
                     catchError((err)=>{
                         return of(new fromAuthAction.SendInfo({info:""}))
@@ -71,7 +74,20 @@ export class AuthEffect {
                     return this.gql.fetch(payload).pipe(
                         map((res)=>{
                             console.log(res)
-                            return new fromAuthAction.SendInfo({info:""})
+                            let data = res["data"]["autologin"]
+                            if (data){
+                                if (data["type"] == "clear"){
+                                    this.removeLocal()
+                                    return new fromAuthAction.SendInfo({info:""})
+                                }else if (data["type"] == "refresh"){
+                                    let token = data["token"]
+                                    this.saveToLocal(token)
+                                    return new fromAuthAction.LoginOK({user:data["user"],token:token})
+                                }else if (data["type"] == "nonew"){
+                                    let token = this.getLocal()
+                                    return new fromAuthAction.LoginOK({user:data["user"],token:token})
+                                }
+                            }
                         }),
                         catchError((err)=>{
                             return of(new fromAuthAction.SendInfo({info:""}))
@@ -87,6 +103,8 @@ export class AuthEffect {
         return this.action$.pipe(
             ofType(fromAuthAction.LOGOUT_START),
             switchMap((action:fromAuthAction.LogoutStart)=>{
+                this.removeLocal()
+                this.router.navigateByUrl("/admin/login")
                 return of(new fromAuthAction.SendInfo({info:""}))
             })
         )

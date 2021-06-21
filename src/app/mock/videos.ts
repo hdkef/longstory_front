@@ -14,6 +14,7 @@ export class VideosMock {
         id:usrid,
         username:usrid,
         avatarurl:avatarurl,
+        email:"email",
       }
     }
   }
