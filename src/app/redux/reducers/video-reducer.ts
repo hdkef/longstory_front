@@ -9,12 +9,13 @@ const initialState:State = {
     searchVideos:null,
 }
 
-export function cachingReducer(
+export function videoReducer(
     state:State = initialState,
     action
 ){
     switch(action.type){
-        case fromVideoAction.RetrieveSearchVideos:
+        case fromVideoAction.RETRIEVE_SEARCH_VIDEOS:
+            console.log("RetrieveSearchVideos")
             return {
                 ...state,
                 searchVideos:action.payload.data,

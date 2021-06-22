@@ -1,4 +1,3 @@
-import { Actions } from "@ngrx/effects"
 import { Action } from "@ngrx/store"
 import { VideoOne } from "src/app/models/video-one"
 
@@ -8,7 +7,7 @@ export const SEND_INFO = "Send Info"
 
 export class RetrieveSearchVideos implements Action {
     type:string = RETRIEVE_SEARCH_VIDEOS
-    constructor(public payload:{videos:VideoOne[]}){}
+    constructor(public payload:{data:VideoOne[]}){}
 }
 
 export class GetNewSearchVideos implements Action {
@@ -16,7 +15,7 @@ export class GetNewSearchVideos implements Action {
     constructor(public payload:{page:number}){}
 }
 
-export class SendInfo implements Actions {
+export class SendInfo implements Action {
     type:string = SEND_INFO
     constructor(public payload:{info:string}){}
 }

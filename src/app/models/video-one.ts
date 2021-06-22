@@ -4,6 +4,6 @@ export interface VideoOne {
     id:string,
     thumbnail:string,
     title:string,
-    video:string,
+    videolink:string,
     user:User,
 }

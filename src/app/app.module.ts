@@ -13,6 +13,8 @@ import { AppReducer } from './redux/reducers/app-reducer';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
+import { CachingEffect } from './redux/effects/caching-effect';
+import { VideoEffect } from './redux/effects/video-effect';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { LoginGuard } from './guard/login.guard';
     NavbarModule,
     HttpClientModule,
     StoreModule.forRoot(AppReducer),
-    EffectsModule.forRoot([AuthEffect]),
+    EffectsModule.forRoot([AuthEffect,CachingEffect,VideoEffect]),
     NoopAnimationsModule
   ],
   providers: [AuthGuard,LoginGuard],

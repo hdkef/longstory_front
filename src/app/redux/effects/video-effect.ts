@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
-import { catchError, map, switchMap } from "rxjs/operators";
+import { catchError, map, switchMap, withLatestFrom } from "rxjs/operators";
 import { GqlService } from "src/app/gql.service";
 import * as fromVideoAction from '../actions/video-action'
 import {AddNewCachePaging} from '../actions/caching-action'
@@ -16,18 +16,41 @@ export class VideoEffect {
     GetNewSearchVideos = createEffect(()=>{
         return this.action$.pipe(
             ofType(fromVideoAction.GET_NEW_SEARCH_VIDEOS),
-            switchMap((action:fromVideoAction.GetNewSearchVideos)=>{
-                //TOBE IMPLEMENTED FETCH SEARCHVIDEOS DATA THEN
-                //NEW RETRIEVE SEARCH VIDEOS AND RETURN OF NEW ADDNEWCACHEPAGING
-                let query = ``
-                return this.gql.fetch(query).pipe(
+            withLatestFrom(this.store.select("caching")),
+            switchMap((value)=>{
+                let action:fromVideoAction.GetNewSearchVideos = value[0]
+                let state = value[1]
+                let lastid = this.getLastID(state.searchVideos)
+                
+                let query = `query hotspotvideos($id:ID!){
+                    hotspotvideos(id:$id){
+                        id
+                        thumbnail
+                        title
+                        videolink
+                        user {
+                            id
+                            username
+                            avatarurl
+                        }
+                    }
+                }`
+                let payload = JSON.stringify(
+                    {
+                        query,
+                        variables:{"id":lastid},
+                    }
+                )
+
+                return this.gql.fetch(payload).pipe(
                     map((res)=>{
-                        //TOBEMODIFIED
-                        this.store.dispatch(new fromVideoAction.RetrieveSearchVideos({videos:res[""]}))
+                        let videos = res["data"]["hotspotvideos"]
+                        console.log("gql fetch map, ",videos)
+                        new fromVideoAction.RetrieveSearchVideos({data:videos})
                         return new AddNewCachePaging({
                             object:constant.SEARCH_VIDEO,
                             totalpage:action.payload.page,
-                            data:res[""],
+                            data:videos,
                         })
                     }),
                     catchError((err)=>{
@@ -37,4 +60,12 @@ export class VideoEffect {
             })
         )
     })
+
+
+    getLastID = (data:any[])=>{
+        if (data){
+            return data[data.length-1].id
+        }
+        return "NO_ID"
+    }
 }

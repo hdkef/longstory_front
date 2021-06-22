@@ -8,6 +8,7 @@ export const GET_CACHE_PAGING = "_Get Cache Paging Start"
 export const GET_CACHE_SINGLE_OBJECT = "_Get Cache Single Object"
 export const ADD_NEW_CACHE_PAGING = "_Add New Cache Paging"
 export const ADD_NEW_SEARCH_VIDEOS = "_Add New Search Videos"
+export const CURRENT_PAGE_SEARCH_VIDEOS = "_Current Page Search Videos"
 
 export class CheckCacheStart implements Action {
     type:string = CHECK_CACHE_START
@@ -41,5 +42,10 @@ export class AddNewCachePaging implements Action {
 
 export class AddNewSearchVideos implements Action {
     type:string = ADD_NEW_SEARCH_VIDEOS
-    constructor(public payload:{totalpage:number,data:VideoOne[]}){}
+    constructor(public payload:{totalpage:number,data:VideoOne[],page:number}){}
+}
+
+export class CurPageSearchVideos implements Action {
+    type:string = CURRENT_PAGE_SEARCH_VIDEOS
+    constructor(public payload:{page:number}){}
 }

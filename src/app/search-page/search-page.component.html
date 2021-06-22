@@ -2,5 +2,8 @@
     <div id="videos-wrapper">
         <app-video-many [videos]="videos"></app-video-many>
     </div>
+    {{page}}
+    <button (click)="paginate(1)">next</button>
+    <button (click)="paginate(-1)">previous</button>
 </div>
 <app-paginator></app-paginator>
