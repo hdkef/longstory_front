@@ -42,7 +42,7 @@ export class AddNewCachePaging implements Action {
 
 export class AddNewSearchVideos implements Action {
     type:string = ADD_NEW_SEARCH_VIDEOS
-    constructor(public payload:{totalpage:number,data:VideoOne[],page:number}){}
+    constructor(public payload:{data:VideoOne[],page:number}){}
 }
 
 export class CurPageSearchVideos implements Action {

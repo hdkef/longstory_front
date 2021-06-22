@@ -1,6 +1,6 @@
 <div id="container">
     <div id="videos-wrapper">
-        <app-video-many [videos]="videos"></app-video-many>
+        <app-video-many [videos]="videos | async"></app-video-many>
     </div>
     {{page}}
     <button (click)="paginate(1)">next</button>

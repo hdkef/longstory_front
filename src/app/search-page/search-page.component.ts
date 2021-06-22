@@ -31,7 +31,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.videoSubs = this.store.select("video").subscribe((data)=>{
-      console.log("searchVideos :", data)
       let searchVideos = data["searchVideos"]
       if (searchVideos){
         this.videos = new Promise((resolve,_)=>{

@@ -15,7 +15,6 @@ export function videoReducer(
 ){
     switch(action.type){
         case fromVideoAction.RETRIEVE_SEARCH_VIDEOS:
-            console.log("RetrieveSearchVideos")
             return {
                 ...state,
                 searchVideos:action.payload.data,

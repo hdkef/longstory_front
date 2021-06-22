@@ -45,8 +45,7 @@ export class VideoEffect {
                 return this.gql.fetch(payload).pipe(
                     map((res)=>{
                         let videos = res["data"]["hotspotvideos"]
-                        console.log("gql fetch map, ",videos)
-                        new fromVideoAction.RetrieveSearchVideos({data:videos})
+                        this.store.dispatch(new fromVideoAction.RetrieveSearchVideos({data:videos}))
                         return new AddNewCachePaging({
                             object:constant.SEARCH_VIDEO,
                             totalpage:action.payload.page,
